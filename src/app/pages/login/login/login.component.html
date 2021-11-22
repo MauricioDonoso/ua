@@ -30,7 +30,8 @@
         <button class="btnContacto" style="background: #2ab5eb;" type="button" ni-button (click)="contacto ? (contacto = false) : (contacto = true)"><span *ngIf="!contacto">Contáctate<br> con nosotros</span><span *ngIf="contacto">Volver</span></button>
       </div>
       <div class="col-md-6" style="text-align: center;" *ngIf="!contacto">
-        <button class="btnContacto" style="background: #0e5dc5;height: 100%;" type="button" ni-button (click)="postula ? (postula = false) : (postula = true)"><span *ngIf="!postula">Postula</span><span *ngIf="postula">Volver</span></button>
+        <!-- <button class="btnContacto" style="background: #0e5dc5;height: 100%;" type="button" ni-button (click)="postula ? (postula = false) : (postula = true)"><span *ngIf="!postula">Postula</span><span *ngIf="postula">Volver</span></button> -->
+        <a href="https://forms.office.com/pages/responsepage.aspx?id=snownTLjw0OTqj5ySP_nfbdumg0xnvBAqrbjQF-x7mRURFpNUEdVQkxUNzNVSldSMTA0R0cyQk1VRi4u" style="text-decoration: none;color: white;" target="_blank"><button class="btnContacto" style="background: #0e5dc5;height: 100%;" type="button" ni-button>Postula</button></a>
       </div>
     </div>
     <section *ngIf="!contacto && !postula">
@@ -191,7 +192,7 @@
     
       <div  class="row"  style="margin-top: 3%;">
         <div class="col-md-12">
-          <button style="background-color: #0e5dc5;width: 100%;color:white;height: 50px;" [disabled]="!form2.valid || !verificar" type="submit" ni-button [view]="'accent'" >Inicia tu postulación aquí
+          <button style="background-color: #0e5dc5;width: 100%;color:white;height: 50px;" [disabled]="!form2.valid || !verificar" type="submit" ni-button [view]="'accent'" >Enviar
             <img src="assets/img/cargando_2.gif" width="20px" *ngIf="cargando2">
           </button>
         </div>
@@ -372,7 +373,7 @@
             <mat-radio-button class="col-md-4" value="DIVORCIADA(O)">DIVORCIADA(O)</mat-radio-button>
           </mat-radio-group>
         </div> 
-        <div class="col-md-12" style="text-align: left;">
+        <div class="col-md-12" style="text-align: left;margin-top: 4%;">
           <mat-form-field appearance="outline">
             <mat-label >15. Establecimiento Educacional de egreso de enseñanza media</mat-label>
             <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['establecimientoE']" required>

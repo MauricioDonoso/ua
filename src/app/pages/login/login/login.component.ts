@@ -503,93 +503,100 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(formDirective) {
-    var body = this.form2.value
-    this.form2.disable()
-    this.verificar = false;
-      this.cargando2 = true;
-      this.mostrar = false;
-      this._userService.registerSolicitud(body).subscribe(res=>{
-        this.form2.reset();
-        this.captcha = null;
-        this.cargando2 = false;
-        formDirective.resetForm();
-        this.form2.enable()
-        this.mostrar = true;
-        this.verificar = false;
-        this.reset()
-        this.typeGuardar();
-        this.comunass = []
-        this.contacto = false;
-        this.postula = false;
-      },err=>{
-        if(err.error.captcha){
-          alertFunction.typeErrorCaptcha()
-        }else{
-          if(err.error.recargar){
-            alertFunction.typeErrorCampos()
+    if(this.form2.valid){
+      var body = this.form2.value
+      this.form2.disable()
+      this.verificar = false;
+        this.cargando2 = true;
+        this.mostrar = false;
+        this._userService.registerSolicitud(body).subscribe(res=>{
+          this.form2.reset();
+          this.captcha = null;
+          this.cargando2 = false;
+          formDirective.resetForm();
+          this.form2.enable()
+          this.mostrar = true;
+          this.verificar = false;
+          this.reset()
+          this.typeGuardar();
+          this.comunass = []
+          this.contacto = false;
+          this.postula = false;
+        },err=>{
+          if(err.error.captcha){
+            alertFunction.typeErrorCaptcha()
           }else{
-            if(err.error.correo){
-              alertFunction.typeErrorCorreo()
+            if(err.error.recargar){
+              alertFunction.typeErrorCampos()
             }else{
-              if(err.error.user){
-                alertFunction.typeErrorUsuarioregistrado()
+              if(err.error.correo){
+                alertFunction.typeErrorCorreo()
               }else{
-                this.typeError();
+                if(err.error.user){
+                  alertFunction.typeErrorUsuarioregistrado()
+                }else{
+                  this.typeError();
+                }
               }
             }
           }
-        }
-        this.mostrar = true;
-        this.cargando2 = false;
-        this.reset()
-        this.form2.enable()
-        this.verificar = true;
-      });
+          this.mostrar = true;
+          this.cargando2 = false;
+          this.reset()
+          this.form2.enable()
+          this.verificar = true;
+        });
+    }
+
+    
   }
 
   onSubmit2(formDirective) {
-    var body = this.form3.value
-    this.form2.disable()
-    this.verificar = false;
-      this.cargando2 = true;
-      this.mostrar = false;
-      this._userService.savePostulacion(body).subscribe(res=>{
-        this.form3.reset();
-        this.captcha = null;
-        this.cargando2 = false;
-        formDirective.resetForm();
-        this.form3.enable()
-        this.mostrar = true;
-        this.verificar = false;
-        this.reset()
-        this.typeGuardar();
-        this.comunass = []
-        this.contacto = false;
-        this.postula = false;
-      },err=>{
-        if(err.error.captcha){
-          alertFunction.typeErrorCaptcha()
-        }else{
-          if(err.error.recargar){
-            alertFunction.typeErrorCampos()
+    if(this.form3.valid){
+      var body = this.form3.value
+      this.form3.disable()
+      this.verificar = false;
+        this.cargando2 = true;
+        this.mostrar = false;
+        this._userService.savePostulacion(body).subscribe(res=>{
+          this.form3.reset();
+          this.captcha = null;
+          this.cargando2 = false;
+          formDirective.resetForm();
+          this.form3.enable()
+          this.mostrar = true;
+          this.verificar = false;
+          this.reset()
+          this.typeGuardar();
+          this.comunass = []
+          this.contacto = false;
+          this.postula = false;
+        },err=>{
+          if(err.error.captcha){
+            alertFunction.typeErrorCaptcha()
           }else{
-            if(err.error.correo){
-              alertFunction.typeErrorCorreo()
+            if(err.error.recargar){
+              alertFunction.typeErrorCampos()
             }else{
-              if(err.error.user){
-                alertFunction.typeErrorUsuarioregistrado()
+              if(err.error.correo){
+                alertFunction.typeErrorCorreo()
               }else{
-                this.typeError();
+                if(err.error.user){
+                  alertFunction.typeErrorUsuarioregistrado()
+                }else{
+                  this.typeError();
+                }
               }
             }
           }
-        }
-        this.mostrar = true;
-        this.cargando2 = false;
-        this.reset()
-        this.form3.enable()
-        this.verificar = true;
-      });
+          this.mostrar = true;
+          this.cargando2 = false;
+          this.reset()
+          this.form3.enable()
+          this.verificar = true;
+        });
+    }
+    
   }
 
   myFunction(){
