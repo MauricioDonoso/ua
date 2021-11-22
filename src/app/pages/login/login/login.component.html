@@ -1,0 +1,399 @@
+
+<ni-card [title]="" [align]="'center'">
+  <div class="row" style="width: 100%;padding: 4%;background: #0e5dc5;margin: 0;margin-bottom: 1%;">
+    <div class="col-6">
+      <img src="assets/img/IMG-03.png" style="float: left;margin-left: 5%;width: 60%;">
+    </div>
+    <div class="col-6" >
+      <div>
+        <img class="logo2" style="float: right;width: 60%;" src="assets/img/IMG-04.png" >
+      </div>
+    </div>
+  </div>
+  <owl-carousel [options]="carouselOptions" [items]="images" [carouselClasses]="['owl-theme', 'fondo_carr', 'sliding']" style="background: white !important;">
+    <div class="item" *ngFor="let image of images;let i= index" style="background: white;">
+      <img class="slide_img" src="{{image.image}}">
+    </div>
+  </owl-carousel>
+  <div style="background-color: #fff;padding-bottom: 2%;">
+    <div style="width: 80%;margin-left: 10%;">
+      <div style="text-align: center;color: #464646;padding-top: 5%;" class="text_inicio">
+        <h4 class="tit">Tú tambien puedes ser parte de la Universidad Antofagasta,<br> postulando a las carreras técnicas que tenemos para ti.</h4>
+      </div>
+      <div style="text-align: center;margin-bottom: 5%;color: #1964c7;padding-top: 2%;" class="text_inicio">
+        <h4 class="tit" style="font-weight: bold !important;">Recibe información sobre nuestas carreras o postula<br>sin Prueba de Transición haciendo click aquí.</h4>
+      </div>
+    </div>
+
+    <div class="row" style="margin: 0;width: 80%;margin-left: 10%;">
+      <div class="col-md-6" style="text-align: center;">
+        <button class="btnContacto" style="background: #2ab5eb;" type="button" ni-button (click)="contacto ? (contacto = false) : (contacto = true)"><span *ngIf="!contacto">Contáctate<br> con nosotros</span><span *ngIf="contacto">Volver</span></button>
+      </div>
+      <div class="col-md-6" style="text-align: center;" *ngIf="!contacto">
+        <button class="btnContacto" style="background: #0e5dc5;height: 100%;" type="button" ni-button (click)="postula ? (postula = false) : (postula = true)"><span *ngIf="!postula">Postula</span><span *ngIf="postula">Volver</span></button>
+      </div>
+    </div>
+    <section *ngIf="!contacto && !postula">
+      <div class="row" style="margin: 0;width: 72%;margin-left: 14%;border:solid 3px #0e5dc5;text-align: center;margin-top: 3%;margin-bottom: -1%;">
+        <h4 style="width: 100%;">Carreras Técnicas</h4>
+      </div>
+      <div class="row" style="margin: 0;width: 78%;margin-left: 11%;background:#0e5dc5;text-align: center;color:white">
+        <h4 style="width: 100%;">Técnicos de Nivel Superior en:</h4>
+        <div class="row" style="width: 90%;margin: 0;margin-left: 5%;text-align: center;">
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Administracion empresas 2021.pdf')">*Administración<br>de empresas</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Alimentacion 2021.pdf')">*Alimentación</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Enfermeria 2021.pdf')">*Enfermería</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Explotacion minera 2021.pdf')">*explotación<br>minera</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Logistica 2021.pdf')">*logística</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Mantenimiento industrial 2021.pdf')">*mantenimiento<br>industrial</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Metalurgia 2021.pdf')">*metalurgia</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Asistente parvulos 2021.pdf')">*educación<br>parvularia</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Prevencion riesgos 2021.pdf')">*prevención<br> de riesgos</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('electricidad industrial 2021.pdf')">*electricidad<br>industrial</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Soporte tecnologias 2021.pdf')">*soporte de tecnologías<br> de información</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('odontologia 2021.pdf')">*odontología</button></div>
+          <div  style="margin: auto;margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Laboratorio clinico 2021.pdf')">*laboratorio clínico<br>y medicina transfusional</button></div>
+        </div>
+      </div>
+      <div class="row" style="margin: 0;width: 72%;margin-left: 14%;border:solid 3px #0e5dc5;text-align: center;margin-top: -1%;padding: 1%;">
+        <p style="width: 72%;margin-left: 14%;padding: 2%;">*Las carreras y programas de pregrado de acreditación no<br>obligatoria solo podrán volver a acreditarse a partir del año 2025</p>
+      </div>
+    </section>
+
+    <form *ngIf="contacto" [formGroup]="form2" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">   
+      <div class="row">
+        <div class="col-md-12" style="text-align: left;">
+          <label >Nombre</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form2.controls['nombre']" required>
+            <mat-error *ngIf="form2.controls['nombre'].hasError('required') && form2.controls['nombre'].touched">
+              Debes agregar un nombre.
+            </mat-error>
+            <mat-error *ngIf="form2.controls['nombre'].hasError('minlength') && form2.controls['nombre'].touched">
+              Debe contener al menos 3 caracteres.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-12" style="text-align: left;">
+          <label >Apellido</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form2.controls['apellido']" required>
+            <mat-error *ngIf="form2.controls['apellido'].hasError('required') && form2.controls['apellido'].touched">
+              Debes agregar un apellido.
+            </mat-error>
+            <mat-error *ngIf="form2.controls['apellido'].hasError('minlength') && form2.controls['apellido'].touched">
+              Debe contener al menos 3 caracteres.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-12" style="text-align: left;">
+          <label >Rut</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" required autocomplete="false" (keyup)="myFunction()" [formControl]="form2.controls['rut']" value="{{rut}}" type="text" [class.mensaje-error]="!verificar && rut.length >0">
+            <mat-error *ngIf="(form2.controls['rut'].hasError('pattern') && form2.controls['rut'].touched) || (!verificar && form2.controls['rut'].touched)">
+              Debes ingresar un rut valido.
+            </mat-error>
+            <mat-error *ngIf="!verificar && form2.controls['rut'].touched">
+              Debes ingresar un rut valido.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-12" style="text-align: left;">
+          <label >Correo electronico</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form2.controls['email']" required>
+            <mat-error *ngIf="form2.controls['email'].hasError('required') && form2.controls['email'].touched">
+              Debes ingresar un correo.
+            </mat-error>
+            <mat-error *ngIf="form2.controls['email'].errors?.email && form2.controls['email'].touched">
+              Debes ingresar un correo valido.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-12" style="text-align: left;">
+          <label >Confirmar correo electronico</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form2.controls['confirmEmail']" required>
+            <mat-error *ngIf="form2.controls['confirmEmail'].hasError('required') && form2.controls['confirmEmail'].touched">
+              Debes ingresar un correo.
+            </mat-error>
+            <mat-error *ngIf="form2.controls['confirmEmail'].errors?.equalTo && form2.controls['confirmEmail'].touched">
+              Debes ingresar un correo valido.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-12" style="text-align: left;">
+          <label >Teléfono</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-align: left;" [formControl]="form2.controls['telefono']" pattern="\d*" type="text" maxlength="9" minlength="8" required>
+            <span matPrefix>+56</span>
+            <mat-error *ngIf="form2.controls['telefono'].hasError('required') && form2.controls['telefono'].touched">
+              Debes ingresar un teléfono.
+            </mat-error>
+            <mat-error *ngIf="form2.controls['telefono'].hasError('pattern') && form2.controls['telefono'].touched">
+              Solo numeros.
+            </mat-error>
+            <mat-error *ngIf="form2.controls['telefono'].hasError('maxlength') && form2.controls['telefono'].touched">
+                No puede superar los 11 caracteres.
+              </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12" style="text-align: left;">
+          <label >Confirmar Teléfono</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-align: left;" [formControl]="form2.controls['confirmTelefono']" pattern="\d*" type="text" maxlength="9" minlength="8" required>
+            <span matPrefix>+56</span>
+            <mat-error *ngIf="form2.controls['confirmTelefono'].errors?.equalTo && form2.controls['confirmTelefono'].touched">
+              Debes ingresar el mismo teléfono.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="text-align: left;">
+          <label >Región</label>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="" [formControl]="form2.controls['region']" required>
+              <mat-option *ngFor="let dia of regiones;let i = index" [value]="dia" (click)="seleccion(i)">{{dia}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form2.controls['region'].hasError('required') && form2.controls['region'].touched">
+                Debes seleccionar una región.
+            </mat-error>
+          </mat-form-field>
+        </div>    
+        <div class="col-md-12" style="text-align: left;">
+          <label >Comuna</label>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="" [formControl]="form2.controls['comuna']" required>
+              <mat-option [disabled]="!comunass[0]" *ngFor="let comuna of comunass" [value]="comuna">{{comuna}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form2.controls['comuna'].hasError('required') && form2.controls['comuna'].touched">
+              Debes seleccionar una comuna.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+     
+      
+    <div class="row" style="margin-top: 5%;text-align: center;">
+      <div class="col-12" [align]="'center'" >                  
+        <re-captcha  (resolved)="resolved($event)" #captchaRef="reCaptcha" siteKey="6Leq1UUdAAAAADMtmgMeXMH3R29sDxXmhdLNmXiL"></re-captcha>
+      </div>
+      <div [align]="'center'" class="col-12" >
+        <div style="width: 100%;text-align: center;margin-top: 2%;margin-bottom: 2%;" >        
+          <p style="font-size: 10px;">Pasado un minuto tu captcha sera invalido, en caso de suceder favor haz click en el boton refrescar</p>
+        </div>
+        <button ni-button *ngIf="mostrar" [view]="'accent'" type="button" style="background-color: #005cb4;color:white;font-size: 14px;height: 25px;width: 1%;margin-bottom: 2%;" class="bajar" (click)="captchaRef.reset()"  >
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    
+      <div  class="row"  style="margin-top: 3%;">
+        <div class="col-md-12">
+          <button style="background-color: #0e5dc5;width: 100%;color:white;height: 50px;" [disabled]="!form2.valid || !verificar" type="submit" ni-button [view]="'accent'" >Inicia tu postulación aquí
+            <img src="assets/img/cargando_2.gif" width="20px" *ngIf="cargando2">
+          </button>
+        </div>
+      </div>
+    </form>  
+    <form *ngIf="postula" [formGroup]="form3" (ngSubmit)="onSubmit(formDirective2)" #formDirective2="ngForm">   
+      <div class="row">
+        <div class="col-md-12" style="text-align: left;">
+          <label >Rut</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" required autocomplete="false" (keyup)="myFunction()" [formControl]="form3.controls['rut']" value="{{rut}}" type="text" [class.mensaje-error]="!verificar && rut.length >0">
+            <mat-error *ngIf="(form3.controls['rut'].hasError('pattern') && form3.controls['rut'].touched) || (!verificar && form2.controls['rut'].touched)">
+              Debes ingresar un rut valido.
+            </mat-error>
+            <mat-error *ngIf="!verificar && form3.controls['rut'].touched">
+              Debes ingresar un rut valido.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-6" style="text-align: left;">
+          <label >Apellido Paterno</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['apellidoP']" required>
+            <mat-error *ngIf="form3.controls['apellidoP'].hasError('required') && form3.controls['apellidoP'].touched">
+              Debes agregar un apellido.
+            </mat-error>
+            <mat-error *ngIf="form3.controls['apellidoP'].hasError('minlength') && form3.controls['apellidoP'].touched">
+              Debe contener al menos 3 caracteres.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-6" style="text-align: left;">
+          <label >Apellido Materno</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['apellidoM']" required>
+            <mat-error *ngIf="form3.controls['apellidoM'].hasError('required') && form3.controls['apellidoM'].touched">
+              Debes agregar un apellido.
+            </mat-error>
+            <mat-error *ngIf="form3.controls['apellidoM'].hasError('minlength') && form3.controls['apellidoM'].touched">
+              Debe contener al menos 3 caracteres.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-12" style="text-align: left;">
+          <label >Nombres</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['nombre']" required>
+            <mat-error *ngIf="form3.controls['nombre'].hasError('required') && form3.controls['nombre'].touched">
+              Debes agregar un nombre.
+            </mat-error>
+            <mat-error *ngIf="form3.controls['nombre'].hasError('minlength') && form3.controls['nombre'].touched">
+              Debe contener al menos 3 caracteres.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-6" style="text-align: left;">
+          <label >Nacionalidad</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['nacionalidad']" required>
+            <mat-error *ngIf="form3.controls['nacionalidad'].hasError('required') && form3.controls['nacionalidad'].touched">
+              Debes agregar una nacionalidad.
+            </mat-error>
+          </mat-form-field>  
+        </div>
+        <div class="col-md-6" style="text-align: left;">
+          <label >Sexo</label>
+          <!-- <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['sexo']" required>
+            <mat-error *ngIf="form3.controls['sexo'].hasError('required') && form3.controls['sexo'].touched">
+              Debes agregar una nacionalidad.
+            </mat-error>
+          </mat-form-field>   -->
+          <mat-radio-group  style="text-align: left;width: 100%;" [formControl]="form3.controls['sexo']" required>
+            <mat-radio-button class="col-md-6" value="Mujer">Mujer</mat-radio-button>
+            <mat-radio-button class="col-md-6" value="Hombre">Hombre</mat-radio-button>
+          </mat-radio-group>
+        </div> 
+        
+        
+        <div class="col-md-6" style="text-align: left;">
+          <label >Correo electronico</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form3.controls['email']" required>
+            <mat-error *ngIf="form3.controls['email'].hasError('required') && form3.controls['email'].touched">
+              Debes ingresar un correo.
+            </mat-error>
+            <mat-error *ngIf="form3.controls['email'].errors?.email && form3.controls['email'].touched">
+              Debes ingresar un correo valido.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-6" style="text-align: left;">
+          <label >Confirmar correo electronico</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form3.controls['confirmEmail']" required>
+            <mat-error *ngIf="form3.controls['confirmEmail'].hasError('required') && form3.controls['confirmEmail'].touched">
+              Debes ingresar un correo.
+            </mat-error>
+            <mat-error *ngIf="form3.controls['confirmEmail'].errors?.equalTo && form3.controls['confirmEmail'].touched">
+              Debes ingresar un correo valido.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-6" style="text-align: left;">
+          <label >Teléfono de contacto</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-align: left;" [formControl]="form3.controls['telefono']" pattern="\d*" type="text" maxlength="9" minlength="8" required>
+            <span matPrefix>+56</span>
+            <mat-error *ngIf="form3.controls['telefono'].hasError('required') && form3.controls['telefono'].touched">
+              Debes ingresar un teléfono.
+            </mat-error>
+            <mat-error *ngIf="form3.controls['telefono'].hasError('pattern') && form3.controls['telefono'].touched">
+              Solo numeros.
+            </mat-error>
+            <mat-error *ngIf="form3.controls['telefono'].hasError('maxlength') && form3.controls['telefono'].touched">
+                No puede superar los 11 caracteres.
+              </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6" style="text-align: left;">
+          <label >Teléfono de contacto (opcional)</label>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" style="text-align: left;" [formControl]="form3.controls['telefonoOpcional']" pattern="\d*" type="text" maxlength="9" minlength="8">
+            <span matPrefix>+56</span>
+            <mat-error *ngIf="form3.controls['telefonoOpcional'].hasError('pattern') && form3.controls['telefonoOpcional'].touched">
+              Solo numeros.
+            </mat-error>
+            <mat-error *ngIf="form3.controls['telefonoOpcional'].hasError('maxlength') && form3.controls['telefonoOpcional'].touched">
+                No puede superar los 11 caracteres.
+              </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-6" style="text-align: left;">
+          <label >Región</label>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="" [formControl]="form3.controls['region']" required>
+              <mat-option *ngFor="let dia of regiones;let i = index" [value]="dia" (click)="seleccion(i)">{{dia}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form3.controls['region'].hasError('required') && form3.controls['region'].touched">
+                Debes seleccionar una región.
+            </mat-error>
+          </mat-form-field>
+        </div>    
+        <div class="col-md-6" style="text-align: left;">
+          <label >Comuna</label>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="" [formControl]="form3.controls['comuna']" required>
+              <mat-option [disabled]="!comunass[0]" *ngFor="let comuna of comunass" [value]="comuna">{{comuna}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form3.controls['comuna'].hasError('required') && form3.controls['comuna'].touched">
+              Debes seleccionar una comuna.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+     
+      
+    <div class="row" style="margin-top: 5%;text-align: center;">
+      <div class="col-12" [align]="'center'" >                  
+        <re-captcha  (resolved)="resolved($event)" #captchaRef="reCaptcha" siteKey="6Leq1UUdAAAAADMtmgMeXMH3R29sDxXmhdLNmXiL"></re-captcha>
+      </div>
+      <div [align]="'center'" class="col-12" >
+        <div style="width: 100%;text-align: center;margin-top: 2%;margin-bottom: 2%;" >        
+          <p style="font-size: 10px;">Pasado un minuto tu captcha sera invalido, en caso de suceder favor haz click en el boton refrescar</p>
+        </div>
+        <button ni-button *ngIf="mostrar" [view]="'accent'" type="button" style="background-color: #005cb4;color:white;font-size: 14px;height: 25px;width: 1%;margin-bottom: 2%;" class="bajar" (click)="captchaRef.reset()"  >
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    
+      <div  class="row"  style="margin-top: 3%;">
+        <div class="col-md-12">
+          <button style="background-color: #0e5dc5;width: 100%;color:white;height: 50px;" [disabled]="!form3.valid || !verificar" type="submit" ni-button [view]="'accent'" >Inicia tu postulación aquí
+            <img src="assets/img/cargando_2.gif" width="20px" *ngIf="cargando2">
+          </button>
+        </div>
+      </div>
+    </form> 
+    <footer style="margin-top: 10%;margin-bottom: 5%;">
+      <h5 style="width: 100%;">Centro de Centro de Carreras Técnicas</h5>
+      <div class="row" style="margin: 0;width: 80%;margin-left: 10%;">
+        <div class="col-md-4 row" style="margin: 0;">
+          <div class="col-2"><img src="assets/img/IMG-05.png" alt=""></div>
+          <div class="col-10" style="text-align: left;"><span>Antonio Toro #851<br>Antofagasta - Chile</span></div>
+        </div>
+        <div class="col-md-4 row" style="margin: 0;">
+          <div class="col-2"><img src="assets/img/IMG-06.png" alt=""></div>
+          <div class="col-10" style="text-align: left;"><span><strong>Email:</strong> carrerastecnicas@uantof.cl</span></div>
+        </div>
+        <div class="col-md-4 row" style="margin: 0;">
+          <div class="col-2"><img src="assets/img/IMG-07.png" alt=""></div>
+          <div class="col-10" style="text-align: left;"><span><strong>Teléfono:</strong> +56 55-2637008</span><br><span><strong>Teléfono:</strong> +56 55-2637151</span><br><span><strong>Móvil:</strong> +56 9 50680612</span></div>
+        </div>
+      </div>
+    </footer> 
+  </div>
+<div style="height: 20px;background: #0e5dc5;"></div>
+</ni-card>
+
+
+ 

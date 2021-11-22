@@ -1,0 +1,208 @@
+@import '../../../../assets/sass/variable';
+
+:host {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+
+  .ni-card {
+    margin: 0 auto;
+    max-width: 1280px;
+    /deep/ .card-wrap {
+      border: 0;
+      background-color: transparent !important;
+    }
+    /deep/ .card-content {
+      padding: 0% !important;
+    }
+    form{
+      width: 60%;
+      margin-left: 20%;
+      background: white;
+      padding: 2%;
+    }
+  
+  }
+}
+/deep/ .mat-radio-label-content {
+  white-space: break-spaces !important;
+}
+/deep/ .mat-radio-group .mat-radio-button{
+  margin: 1% !important;
+}
+
+/deep/ .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #464646;
+}
+
+/deep/ .mat-form-field-infix {
+  border-top: 0.4em solid transparent;
+}
+
+/deep/ body .mat-form-field-flex .mat-form-field-prefix, body .mat-form-field-flex .mat-form-field-suffix {
+  padding-top: 0;
+}
+.invalid{
+  border: #f04141 solid 2px !important;
+}
+.mensaje-error{
+  color: #f04141;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.slide_img{
+  height: 400px;
+}
+
+.text_inicio{
+  font-size: 23px;
+}
+.avatar {
+  border-radius: 50%;
+  padding-top: 1.2%;
+  margin-right: 1%;
+  height: 40px;
+  overflow: hidden;
+  width: 40px;
+  background: white !important;
+  color: #464646 !important;
+  border: 1px solid #464646;
+}
+.bajar{
+  padding-top: 1.5%;
+}
+
+.avatar:hover{
+  background:#464646 !important;
+  color: white !important;
+}
+.tit{
+  font-weight: normal;
+}
+.btnContacto{
+  color:white;font-size: 24px;border-radius: 50px !important;width: 50%;font-weight: bold;
+}
+.btnCarrera{
+  border-radius: 50px !important;
+  font-weight: bold;
+  text-transform: uppercase;height: 100%;width: 100%;
+}
+.btnCarrera:hover{
+  font-size: 18px;
+}
+@media(max-width: 600px) {
+  .btnContacto{
+    width: 100%;margin-bottom: 2%;font-size: 16px;
+  }
+  .btnCarrera{
+    font-size: 12px;
+  }
+  .btnCarrera:hover{
+    font-size: 14px;
+  }
+  .bajar{
+    padding-top: 3.2%;
+  }
+  .avatar {
+    padding-top: 3.2%;
+  }
+  form{
+    width: 90% !important;
+    margin-left: 5% !important;
+  }
+  .tit{
+    font-size: 16px;
+  }
+  .slide_img{
+    height: 160px;
+  }
+  .text_inicio{
+    font-size: 12px;
+  }
+
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+        font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row { 
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+  /deep/ .mat-select-value{
+    max-width: fit-content !important;
+  }
+}
+
+.fondo_carr{
+  background: white;
+}
+.owl-carousel {
+  width: 100% !important;
+  background: white !important;
+  // margin: 10% auto;
+}
+
+.owl-carousel .owl-nav {
+  overflow: hidden;
+  height: 0px;
+}
+
+/deep/ owl-carousel-child{
+  background: white !important;
+}
+.owl-carousel.owl-loaded{
+  background: white !important;
+}
+// .owl-carousel .nav-btn {
+//   height: 47px;
+//   position: absolute;
+//   width: 26px;
+//   cursor: pointer;
+//   top: 30% !important;
+// }
+
+.owl-carousel .owl-prev.disabled,
+.owl-carousel .owl-next.disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+// .owl-carousel .prev-slide {
+//   // background: url(../../../../assets/img/footer.png) no-repeat scroll 0 0;
+//   // left: -33px;
+//   // background-position: 0px -53px;
+
+// }
+
+// .owl-carousel .next-slide {
+//   // background: url(../../../../assets/img/footer.png) no-repeat scroll -24px 0px;
+//   // right: -33px;
+//   // background-position: -24px -53px;
+// }
+
+// .owl-carousel .prev-slide:hover {
+//   background-position: 0px -53px;
+// }
+
+// .owl-carousel .next-slide:hover {
+//   background-position: -24px -53px;
+// }
+
+@font-face {font-family: "Acta Display"; src: url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.eot"); src: url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.woff") format("woff"), url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.svg#Acta Display") format("svg"); }
+::ng-deep .mat-input-underline {
+  display: none;
+}
+
