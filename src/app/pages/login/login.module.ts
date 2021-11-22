@@ -42,26 +42,16 @@ import {
 import { LoginComponent } from './login/login.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { CalendarModule,CalendarDateFormatter } from 'angular-calendar';
-
-
-
-export function socialConfigs() {  
-  const config = new AuthServiceConfig(  
-    [  
-      {  
-        id: FacebookLoginProvider.PROVIDER_ID,  
-        provider: new FacebookLoginProvider('1562346647272912')  
-      },  
-      {  
-        id: GoogleLoginProvider.PROVIDER_ID,  
-        provider: new GoogleLoginProvider('680216197118-kr29qfktcraq27ru5eadd7obkpdduq08.apps.googleusercontent.com')  
-      }  
-    ]  
-  );  
-  return config;  
-}  
 import { OwlModule } from 'ngx-owl-carousel';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS} from 'ng-pick-datetime';
+export const MY_MOMENT_FORMATS = {
+  fullPickerInput: {day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'},
+  datePickerInput: {day: 'numeric', month: 'numeric', year: 'numeric',},
+  timePickerInput: {hour: 'numeric', minute: 'numeric'},
+  monthYearLabel: {year: 'numeric', month: 'short'},
+  dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+  monthYearA11yLabel: {year: 'numeric', month: 'long'},
+};
 
 @NgModule({
   declarations: [LoginComponent],
@@ -102,21 +92,14 @@ import { OwlModule } from 'ngx-owl-carousel';
     MatTooltipModule,
     MatStepperModule,
     OwlModule,
-    // RecaptchaModule,
-    // NgxCaptchaModule,
     ChartsModule,
     SocialLoginModule,
     RecaptchaModule,
     CalendarModule.forRoot(),
-    // SocketIoModule.forRoot(config)
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
   ],
-  providers:[
-    AuthService,  
-    {  
-      provide: AuthServiceConfig,  
-      useFactory: socialConfigs  
-    } 
-  ],
+  providers:[{provide:OWL_DATE_TIME_FORMATS,useValue: MY_MOMENT_FORMATS}],
 })
 export class LoginModule { }
  

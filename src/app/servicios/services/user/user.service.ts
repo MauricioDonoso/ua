@@ -46,50 +46,13 @@ export class UserService{
             let params = JSON.stringify(user);//json convertido a un string
             let headers = new HttpHeaders().set('Content-Type', 'application/json')
             // .set('Authorization', this.getToken());
-            return this._http.post(this.url_app+'saveUser',params, {headers:headers});
+            return this._http.post(this.url_app+'saveContacto',params, {headers:headers});
         }
-        registerWebinar(user): Observable<any>{
+        savePostulacion(user): Observable<any>{
             let params = JSON.stringify(user);//json convertido a un string
             let headers = new HttpHeaders().set('Content-Type', 'application/json')
             // .set('Authorization', this.getToken());
-            return this._http.post(this.url_app+'saveWebinar',params, {headers:headers});
+            return this._http.post(this.url_app+'savePostulacion',params, {headers:headers});
         }
-        getZoom(): Observable<any>{
-            let headers = new HttpHeaders().set('Content-Type', 'application/json')
-            // .set('Authorization', this.getToken());
-            return this._http.get(this.url_app+'getZoom', {headers:headers});
-        }
-        saveBienvenida(user): Observable<any>{
-            let params = JSON.stringify(user);//json convertido a un string
-            let headers = new HttpHeaders().set('Content-Type', 'application/json')
-            // .set('Authorization', this.getToken());
-            return this._http.post(this.url_app+'saveBienvenida',params, {headers:headers});
-        }
-        saveVespertino(user): Observable<any>{
-            let params = JSON.stringify(user);//json convertido a un string
-            let headers = new HttpHeaders().set('Content-Type', 'application/json')
-            // .set('Authorization', this.getToken());
-            return this._http.post(this.url_app+'saveVespertino',params, {headers:headers});
-        }
-        savePostgrado(user): Observable<any>{
-            let params = JSON.stringify(user);//json convertido a un string
-            let headers = new HttpHeaders().set('Content-Type', 'application/json')
-            // .set('Authorization', this.getToken());
-            return this._http.post(this.url_app+'savePostgrado',params, {headers:headers});
-        }
-        getPostgrado(): Observable<any>{
-            let headers = new HttpHeaders().set('Content-Type', 'application/json')
-            // .set('Authorization', this.getToken());
-            return this._http.get(this.url_app+'getPostgrado', {headers:headers});
-        }
-        getUsuarios(): Observable<any>{
-            let headers = new HttpHeaders().set('Content-Type', 'application/json')
-            // .set('Authorization', this.getToken());
-            return this._http.get(this.url_app+'getUsuarios', {headers:headers});
-        }
-        getVespertino(): Observable<any>{
-            let headers = new HttpHeaders().set('Content-Type', 'application/json')
-            // .set('Authorization', this.getToken());
-            return this._http.get(this.url_app+'getVespertino', {headers:headers});
-        }
+        
 }

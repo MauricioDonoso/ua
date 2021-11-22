@@ -7,11 +7,13 @@ import * as alertFunction from '../../../servicios/data/sweet-alerts';
 import { RecaptchaComponent } from 'ng-recaptcha';
 import { timer } from 'rxjs';
 import { FormGroupDirective } from '@angular/forms';
+import { DateTimeAdapter } from 'ng-pick-datetime';
 
 const email = new FormControl('', Validators.compose([Validators.required, CustomValidators.email]));
 const telefono = new FormControl(null, Validators.compose([Validators.required,Validators.pattern('[0-9]+')]));
 const confirmEmail = new FormControl('', CustomValidators.equalTo(email));
 const confirmTelefono = new FormControl('', CustomValidators.equalTo(telefono));
+const telefono2 = new FormControl(null, Validators.compose([Validators.pattern('[0-9]+')]));
 
 @Component({
   selector: 'app-login',
@@ -425,8 +427,11 @@ export class LoginComponent implements OnInit {
           verificar = false;
   contacto = false;
   postula = false;
-  constructor(private router: Router,private fb: FormBuilder,private _userService:UserService,
-    ) { }
+  rut2 = '';
+  constructor(private router: Router,private fb: FormBuilder,private _userService:UserService,dateTimeAdapter: DateTimeAdapter<any>
+    ) {
+      dateTimeAdapter.setLocale('mx-MX')
+     }
 
   ngOnInit() {
     this.form2 = this.fb.group({
@@ -448,7 +453,7 @@ export class LoginComponent implements OnInit {
       email:email,
       confirmEmail:confirmEmail,
       telefono: telefono,
-      telefonoOpcional:telefono,
+      telefonoOpcional:telefono2,
       estadoCivil:['',Validators.compose([Validators.required])],
       establecimientoE:['',Validators.compose([Validators.required])],
       tipoEstablecimiento:['',Validators.compose([Validators.required])],
@@ -458,7 +463,7 @@ export class LoginComponent implements OnInit {
       comoEntero:['',Validators.compose([Validators.required])],
       comoEnteroOtro:[''],
       decidioEstudiar:['',Validators.compose([Validators.required])],
-      decidioEstudiarOtro:['',Validators.compose([Validators.required])],
+      decidioEstudiarOtro:[''],
       region: ['', Validators.compose([Validators.required])],
       comuna: ['', Validators.compose([Validators.required])],
       nacionalidad: ['',Validators.compose([Validators.required])],
@@ -473,18 +478,6 @@ export class LoginComponent implements OnInit {
     // })
   }
 
-  cambio(){
-    var a = 0;
-    a = a +(this.form2.value.carrerasdiurnas ? this.form2.value.carrerasdiurnas.length :0)
-    // a = a +(this.form2.value.carrerascontinuidad ? this.form2.value.carrerascontinuidad.length :0)
-    // a = a +(this.form2.value.postgrado ? this.form2.value.postgrado.length :0)
-    if(a <= 0){
-      this.verificar = false;
-    }else{
-      this.verificar = true;
-    }
-  }
-
   abrir(data){
     window.open('assets/carreras/'+data,'_blank')
   }
@@ -493,17 +486,20 @@ export class LoginComponent implements OnInit {
     this.comunass = this.comunas[i];
     this.comunass.sort()
     this.form2.controls['comuna'].reset()
+    this.form3.controls['comuna'].reset()
     }
 
 
   resolved(captchaResponse: string) {
     this.captcha = captchaResponse;    
     this.form2.controls['captcha'].setValue(this.captcha)
+    this.form3.controls['captcha'].setValue(this.captcha)
   }
 
   reset(){
     this.captchaRef.reset();
     this.form2.controls['captcha'].reset()
+    this.form3.controls['captcha'].reset()
   }
 
   onSubmit(formDirective) {
@@ -516,20 +512,6 @@ export class LoginComponent implements OnInit {
         this.form2.reset();
         this.captcha = null;
         this.cargando2 = false;
-        // this.form2 = this.fb.group({
-        //   nombre: ['', Validators.compose([Validators.required])],
-        //   apellido: ['', Validators.compose([Validators.required])],
-        //   email:email,
-        //   confirmEmail:confirmEmail,
-        //   telefono: telefono,
-        //   confirmTelefono:confirmTelefono,
-        //   region: ['', Validators.compose([Validators.required])],
-        //   comuna: ['', Validators.compose([Validators.required])],
-        //   carrerasdiurnas: ['', Validators.compose([Validators.required])],
-        //   carrerascontinuidad: ['', Validators.compose([Validators.required])],
-        //   postgrado: ['', Validators.compose([Validators.required])],
-        //   captcha: ['', Validators.compose([Validators.required])],
-        // });
         formDirective.resetForm();
         this.form2.enable()
         this.mostrar = true;
@@ -537,6 +519,8 @@ export class LoginComponent implements OnInit {
         this.reset()
         this.typeGuardar();
         this.comunass = []
+        this.contacto = false;
+        this.postula = false;
       },err=>{
         if(err.error.captcha){
           alertFunction.typeErrorCaptcha()
@@ -561,7 +545,51 @@ export class LoginComponent implements OnInit {
         this.form2.enable()
         this.verificar = true;
       });
-    
+  }
+
+  onSubmit2(formDirective) {
+    var body = this.form3.value
+    this.form2.disable()
+    this.verificar = false;
+      this.cargando2 = true;
+      this.mostrar = false;
+      this._userService.savePostulacion(body).subscribe(res=>{
+        this.form3.reset();
+        this.captcha = null;
+        this.cargando2 = false;
+        formDirective.resetForm();
+        this.form3.enable()
+        this.mostrar = true;
+        this.verificar = false;
+        this.reset()
+        this.typeGuardar();
+        this.comunass = []
+        this.contacto = false;
+        this.postula = false;
+      },err=>{
+        if(err.error.captcha){
+          alertFunction.typeErrorCaptcha()
+        }else{
+          if(err.error.recargar){
+            alertFunction.typeErrorCampos()
+          }else{
+            if(err.error.correo){
+              alertFunction.typeErrorCorreo()
+            }else{
+              if(err.error.user){
+                alertFunction.typeErrorUsuarioregistrado()
+              }else{
+                this.typeError();
+              }
+            }
+          }
+        }
+        this.mostrar = true;
+        this.cargando2 = false;
+        this.reset()
+        this.form3.enable()
+        this.verificar = true;
+      });
   }
 
   myFunction(){
@@ -575,8 +603,21 @@ export class LoginComponent implements OnInit {
       this.form2.controls['rut'].setValue(rut);
       this.rut = rut;
     }
-    // console.log(this.rut)
     this.verificar = (this.verificador(this.rut))
+  }
+
+  myFunction2(){
+    var rut:any = String(this.form3.value.rut).replace(/-/g,'')
+    rut = String(rut).replace(/\./g,'')
+    rut = String(rut).replace('null','')
+    if(rut.length >1){
+      this.form3.controls['rut'].setValue((String(rut).substring(0,(rut.length) -1)+'-'+String(rut).substring((rut.length) -1,rut.length)))
+      this.rut2 = this.form3.value.rut  
+    }else{
+      this.form3.controls['rut'].setValue(rut);
+      this.rut2 = rut;
+    }
+    this.verificar = (this.verificador(this.rut2))
   }
 
   verificador(rut):boolean{

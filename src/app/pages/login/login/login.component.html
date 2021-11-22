@@ -26,7 +26,7 @@
     </div>
 
     <div class="row" style="margin: 0;width: 80%;margin-left: 10%;">
-      <div class="col-md-6" style="text-align: center;">
+      <div class="col-md-6" style="text-align: center;" *ngIf="!postula">
         <button class="btnContacto" style="background: #2ab5eb;" type="button" ni-button (click)="contacto ? (contacto = false) : (contacto = true)"><span *ngIf="!contacto">Contáctate<br> con nosotros</span><span *ngIf="contacto">Volver</span></button>
       </div>
       <div class="col-md-6" style="text-align: center;" *ngIf="!contacto">
@@ -50,7 +50,7 @@
           <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Asistente parvulos 2021.pdf')">*educación<br>parvularia</button></div>
           <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Prevencion riesgos 2021.pdf')">*prevención<br> de riesgos</button></div>
           <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('electricidad industrial 2021.pdf')">*electricidad<br>industrial</button></div>
-          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Soporte tecnologias 2021.pdf')">*soporte de tecnologías<br> de información</button></div>
+          <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera2" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Soporte tecnologias 2021.pdf')">*soporte de tecnologías<br> de información</button></div>
           <div class="col-md-4" style="margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('odontologia 2021.pdf')">*odontología</button></div>
           <div  style="margin: auto;margin-bottom: 2%;"><button class="btnCarrera" style="background: white;color: #0e5dc5;" type="button" ni-button (click)="abrir('Laboratorio clinico 2021.pdf')">*laboratorio clínico<br>y medicina transfusional</button></div>
         </div>
@@ -99,7 +99,7 @@
           </mat-form-field>  
         </div> 
         <div class="col-md-12" style="text-align: left;">
-          <label >Correo electronico</label>
+          <label >Correo electrónico</label>
           <mat-form-field appearance="outline">
             <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form2.controls['email']" required>
             <mat-error *ngIf="form2.controls['email'].hasError('required') && form2.controls['email'].touched">
@@ -111,7 +111,7 @@
           </mat-form-field>  
         </div> 
         <div class="col-md-12" style="text-align: left;">
-          <label >Confirmar correo electronico</label>
+          <label >Confirmar correo electrónico</label>
           <mat-form-field appearance="outline">
             <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form2.controls['confirmEmail']" required>
             <mat-error *ngIf="form2.controls['confirmEmail'].hasError('required') && form2.controls['confirmEmail'].touched">
@@ -197,12 +197,12 @@
         </div>
       </div>
     </form>  
-    <form *ngIf="postula" [formGroup]="form3" (ngSubmit)="onSubmit(formDirective2)" #formDirective2="ngForm">   
+    <form *ngIf="postula" [formGroup]="form3" (ngSubmit)="onSubmit2(formDirective2)" #formDirective2="ngForm">   
       <div class="row">
         <div class="col-md-12" style="text-align: left;">
-          <label >Rut</label>
           <mat-form-field appearance="outline">
-            <input matInput placeholder="" required autocomplete="false" (keyup)="myFunction()" [formControl]="form3.controls['rut']" value="{{rut}}" type="text" [class.mensaje-error]="!verificar && rut.length >0">
+            <mat-label >1. Rut</mat-label>
+            <input matInput placeholder="" required autocomplete="false" (keyup)="myFunction2()" [formControl]="form3.controls['rut']" value="{{rut2}}" type="text" [class.mensaje-error]="!verificar && rut2.length >0">
             <mat-error *ngIf="(form3.controls['rut'].hasError('pattern') && form3.controls['rut'].touched) || (!verificar && form2.controls['rut'].touched)">
               Debes ingresar un rut valido.
             </mat-error>
@@ -212,8 +212,8 @@
           </mat-form-field>  
         </div> 
         <div class="col-md-6" style="text-align: left;">
-          <label >Apellido Paterno</label>
           <mat-form-field appearance="outline">
+            <mat-label >2. Apellido Paterno</mat-label>
             <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['apellidoP']" required>
             <mat-error *ngIf="form3.controls['apellidoP'].hasError('required') && form3.controls['apellidoP'].touched">
               Debes agregar un apellido.
@@ -224,8 +224,8 @@
           </mat-form-field>  
         </div> 
         <div class="col-md-6" style="text-align: left;">
-          <label >Apellido Materno</label>
           <mat-form-field appearance="outline">
+            <mat-label>3. Apellido Materno</mat-label>
             <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['apellidoM']" required>
             <mat-error *ngIf="form3.controls['apellidoM'].hasError('required') && form3.controls['apellidoM'].touched">
               Debes agregar un apellido.
@@ -236,8 +236,8 @@
           </mat-form-field>  
         </div> 
         <div class="col-md-12" style="text-align: left;">
-          <label >Nombres</label>
           <mat-form-field appearance="outline">
+            <mat-label >4. Nombres</mat-label>
             <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['nombre']" required>
             <mat-error *ngIf="form3.controls['nombre'].hasError('required') && form3.controls['nombre'].touched">
               Debes agregar un nombre.
@@ -248,8 +248,8 @@
           </mat-form-field>  
         </div> 
         <div class="col-md-6" style="text-align: left;">
-          <label >Nacionalidad</label>
           <mat-form-field appearance="outline">
+            <mat-label >5. Nacionalidad</mat-label>
             <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['nacionalidad']" required>
             <mat-error *ngIf="form3.controls['nacionalidad'].hasError('required') && form3.controls['nacionalidad'].touched">
               Debes agregar una nacionalidad.
@@ -257,47 +257,60 @@
           </mat-form-field>  
         </div>
         <div class="col-md-6" style="text-align: left;">
-          <label >Sexo</label>
-          <!-- <mat-form-field appearance="outline">
-            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['sexo']" required>
-            <mat-error *ngIf="form3.controls['sexo'].hasError('required') && form3.controls['sexo'].touched">
-              Debes agregar una nacionalidad.
-            </mat-error>
-          </mat-form-field>   -->
+          <mat-label >6. Sexo</mat-label>
           <mat-radio-group  style="text-align: left;width: 100%;" [formControl]="form3.controls['sexo']" required>
             <mat-radio-button class="col-md-6" value="Mujer">Mujer</mat-radio-button>
             <mat-radio-button class="col-md-6" value="Hombre">Hombre</mat-radio-button>
           </mat-radio-group>
         </div> 
-        
-        
         <div class="col-md-6" style="text-align: left;">
-          <label >Correo electronico</label>
           <mat-form-field appearance="outline">
-            <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form3.controls['email']" required>
-            <mat-error *ngIf="form3.controls['email'].hasError('required') && form3.controls['email'].touched">
-              Debes ingresar un correo.
+            <mat-label >7. Fecha de Nacimiento</mat-label>
+            <input matInput readonly placeholder="Fecha de Nacimiento" [formControl]="form3.controls['fechaNacimiento']"  [owlDateTimeTrigger]="dt"
+            [owlDateTime]="dt" >
+            <owl-date-time [pickerType]="'calendar'"
+            [startView]="'multi-years'"
+            #dt="owlDateTime" firstDayOfWeek="1"></owl-date-time>
+            <mat-error *ngIf="form3.controls['fechaNacimiento'].hasError('required') && form3.controls['fechaNacimiento'].touched">
+              Debes agregar la fecha de nacimiento.
             </mat-error>
-            <mat-error *ngIf="form3.controls['email'].errors?.email && form3.controls['email'].touched">
-              Debes ingresar un correo valido.
+          </mat-form-field>
+        </div>
+        <div class="col-md-6" style="text-align: left;">
+          <mat-form-field appearance="outline">
+            <mat-label >8. Domicilio</mat-label>
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['domicilio']" required>
+            <mat-error *ngIf="form3.controls['domicilio'].hasError('required') && form3.controls['domicilio'].touched">
+              Debes agregar una nacionalidad.
             </mat-error>
           </mat-form-field>  
-        </div> 
+        </div>
+       
         <div class="col-md-6" style="text-align: left;">
-          <label >Confirmar correo electronico</label>
           <mat-form-field appearance="outline">
-            <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form3.controls['confirmEmail']" required>
-            <mat-error *ngIf="form3.controls['confirmEmail'].hasError('required') && form3.controls['confirmEmail'].touched">
-              Debes ingresar un correo.
+            <mat-label >9. Región</mat-label>
+            <mat-select placeholder="" [formControl]="form3.controls['region']" required>
+              <mat-option *ngFor="let dia of regiones;let i = index" [value]="dia" (click)="seleccion(i)">{{dia}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form3.controls['region'].hasError('required') && form3.controls['region'].touched">
+                Debes seleccionar una región.
             </mat-error>
-            <mat-error *ngIf="form3.controls['confirmEmail'].errors?.equalTo && form3.controls['confirmEmail'].touched">
-              Debes ingresar un correo valido.
-            </mat-error>
-          </mat-form-field>  
-        </div> 
+          </mat-form-field>
+        </div>    
         <div class="col-md-6" style="text-align: left;">
-          <label >Teléfono de contacto</label>
           <mat-form-field appearance="outline">
+            <mat-label >10. Comuna</mat-label>
+            <mat-select placeholder="" [formControl]="form3.controls['comuna']" required>
+              <mat-option [disabled]="!comunass[0]" *ngFor="let comuna of comunass" [value]="comuna">{{comuna}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form3.controls['comuna'].hasError('required') && form3.controls['comuna'].touched">
+              Debes seleccionar una comuna.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6" style="text-align: left;">
+          <mat-form-field appearance="outline">
+            <mat-label >11. Teléfono de contacto</mat-label>
             <input matInput placeholder="" style="text-align: left;" [formControl]="form3.controls['telefono']" pattern="\d*" type="text" maxlength="9" minlength="8" required>
             <span matPrefix>+56</span>
             <mat-error *ngIf="form3.controls['telefono'].hasError('required') && form3.controls['telefono'].touched">
@@ -312,8 +325,8 @@
           </mat-form-field>
         </div>
         <div class="col-md-6" style="text-align: left;">
-          <label >Teléfono de contacto (opcional)</label>
           <mat-form-field appearance="outline">
+            <mat-label >12. Teléfono de contacto (opcional)</mat-label>
             <input matInput placeholder="" style="text-align: left;" [formControl]="form3.controls['telefonoOpcional']" pattern="\d*" type="text" maxlength="9" minlength="8">
             <span matPrefix>+56</span>
             <mat-error *ngIf="form3.controls['telefonoOpcional'].hasError('pattern') && form3.controls['telefonoOpcional'].touched">
@@ -324,32 +337,132 @@
               </mat-error>
           </mat-form-field>
         </div>
-
-      </div>
-      <div class="row">
         <div class="col-md-6" style="text-align: left;">
-          <label >Región</label>
           <mat-form-field appearance="outline">
-            <mat-select placeholder="" [formControl]="form3.controls['region']" required>
-              <mat-option *ngFor="let dia of regiones;let i = index" [value]="dia" (click)="seleccion(i)">{{dia}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="form3.controls['region'].hasError('required') && form3.controls['region'].touched">
-                Debes seleccionar una región.
+            <mat-label >13. Correo electrónico</mat-label>
+            <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form3.controls['email']" required>
+            <mat-error *ngIf="form3.controls['email'].hasError('required') && form3.controls['email'].touched">
+              Debes ingresar un correo.
             </mat-error>
-          </mat-form-field>
-        </div>    
+            <mat-error *ngIf="form3.controls['email'].errors?.email && form3.controls['email'].touched">
+              Debes ingresar un correo valido.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
         <div class="col-md-6" style="text-align: left;">
-          <label >Comuna</label>
           <mat-form-field appearance="outline">
-            <mat-select placeholder="" [formControl]="form3.controls['comuna']" required>
-              <mat-option [disabled]="!comunass[0]" *ngFor="let comuna of comunass" [value]="comuna">{{comuna}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="form3.controls['comuna'].hasError('required') && form3.controls['comuna'].touched">
-              Debes seleccionar una comuna.
+            <mat-label >Confirmar correo electrónico</mat-label>
+            <input matInput placeholder="" style="text-transform: lowercase;" [formControl]="form3.controls['confirmEmail']" required>
+            <mat-error *ngIf="form3.controls['confirmEmail'].hasError('required') && form3.controls['confirmEmail'].touched">
+              Debes ingresar un correo.
             </mat-error>
-          </mat-form-field>
+            <mat-error *ngIf="form3.controls['confirmEmail'].errors?.equalTo && form3.controls['confirmEmail'].touched">
+              Debes ingresar un correo valido.
+            </mat-error>
+          </mat-form-field>  
+        </div> 
+        <div class="col-md-12" style="text-align: left;margin-top: 2%;">
+          <mat-label >14. Estado Civil</mat-label>
+          <mat-radio-group  style="text-align: left;margin: 0;" [formControl]="form3.controls['estadoCivil']" required>
+            <mat-radio-button class="col-md-4" value="SOLTERA(O)">SOLTERA(O)</mat-radio-button>
+            <mat-radio-button class="col-md-4" value="CASADA(O)">CASADA(O)</mat-radio-button>
+            <mat-radio-button class="col-md-4" value="VIUDA(O)">VIUDA(O)</mat-radio-button>
+            <mat-radio-button class="col-md-4" value="SEPARADA(O)">SEPARADA(O)</mat-radio-button>
+            <mat-radio-button class="col-md-4" value="UNIDA(O) CIVILMENTE">UNIDA(O) CIVILMENTE</mat-radio-button>
+            <mat-radio-button class="col-md-4" value="DIVORCIADA(O)">DIVORCIADA(O)</mat-radio-button>
+          </mat-radio-group>
+        </div> 
+        <div class="col-md-12" style="text-align: left;">
+          <mat-form-field appearance="outline">
+            <mat-label >15. Establecimiento Educacional de egreso de enseñanza media</mat-label>
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['establecimientoE']" required>
+            <mat-error *ngIf="form3.controls['establecimientoE'].hasError('required') && form3.controls['establecimientoE'].touched">
+              Debes ingresar un establecimiento.
+            </mat-error>
+          </mat-form-field>  
+        </div>
+        <div class="col-md-12" style="text-align: left;">
+          <mat-label >16. Tipo de establecimiento</mat-label>
+          <mat-radio-group  style="text-align: left;margin: 0;" [formControl]="form3.controls['tipoEstablecimiento']" required>
+            <mat-radio-button class="col-md-12" value="CIENTÍFICO-HUMANISTA">CIENTÍFICO-HUMANISTA</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO PROFESIONAL">TÉCNICO PROFESIONAL</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="POLIVALENTE (CIENTÍFICO HUMANISTA/TÉCNICO PROFESIONAL)">POLIVALENTE (CIENTÍFICO HUMANISTA/TÉCNICO PROFESIONAL)</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-md-12" style="text-align: left;margin-top: 4%;">
+          <mat-form-field appearance="outline">
+            <mat-label >17. Año de egreso de enseñanza media</mat-label>
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['egreso']" type="number" min=1940 max=2021 required>
+            <mat-error *ngIf="form3.controls['egreso'].hasError('required') && form3.controls['egreso'].touched">
+              Debes ingresar un año de egreso.
+            </mat-error>
+          </mat-form-field>  
+        </div>
+        <div class="col-md-12" style="text-align: left;">
+          <mat-label >18. ¿Actualmente se encuentra trabajando?</mat-label>
+          <mat-radio-group  style="text-align: left;margin: 0;" [formControl]="form3.controls['trabajando']" required>
+            <mat-radio-button class="col-md-6" value="SI">SI</mat-radio-button>
+            <mat-radio-button class="col-md-6" value="NO">NO</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-md-12" style="text-align: left;margin-top: 4%;">
+          <mat-label >19. ¿Actualmente se encuentra trabajando?</mat-label>
+          <mat-radio-group  style="text-align: left;margin: 0;" [formControl]="form3.controls['carrera']" required>
+            <mat-radio-button class="col-md-12" value="TÉNICO DE NIVEL SUPERIOR EN ADMINISTRACIÓN DE EMPRESAS">TÉNICO DE NIVEL SUPERIOR EN ADMINISTRACIÓN DE EMPRESAS</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN ALIMENTACIÓN">TÉCNICO DE NIVEL SUPERIOR EN ALIMENTACIÓN</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN EDUCACIÓN PARVULARIA">TÉCNICO DE NIVEL SUPERIOR EN EDUCACIÓN PARVULARIA</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN EXPLOTACIÓN MINERA">TÉCNICO DE NIVEL SUPERIOR EN EXPLOTACIÓN MINERA</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN LOGÍSTICA">TÉCNICO DE NIVEL SUPERIOR EN LOGÍSTICA</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN MANTENIMIENTO INDUSTRIAL">TÉCNICO DE NIVEL SUPERIOR EN MANTENIMIENTO INDUSTRIAL</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN METALURGIA">TÉCNICO DE NIVEL SUPERIOR EN METALURGIA</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN PREVENCIÓN DE RIESGOS">TÉCNICO DE NIVEL SUPERIOR EN PREVENCIÓN DE RIESGOS</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN ELECTRICIDAD INDUSTRIAL">TÉCNICO DE NIVEL SUPERIOR EN ELECTRICIDAD INDUSTRIAL</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN SOPORTE DE TECNOLIGÍAS DE INFORMACIÓN">TÉCNICO DE NIVEL SUPERIOR EN SOPORTE DE TECNOLIGÍAS DE INFORMACIÓN</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN LABORATORIO CLÍNICO Y MEDICINA TRANSFUSIONAL">TÉCNICO DE NIVEL SUPERIOR EN LABORATORIO CLÍNICO Y MEDICINA TRANSFUSIONAL</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="TÉCNICO DE NIVEL SUPERIOR EN ODONTOLOGÍA CON MENCIÓN PABELLÓN ODONTOLÓGICO / CON MENCIÓN ESTERILIZACIÓN">TÉCNICO DE NIVEL SUPERIOR EN ODONTOLOGÍA CON MENCIÓN PABELLÓN ODONTOLÓGICO / CON MENCIÓN ESTERILIZACIÓN</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-md-12" style="text-align: left;margin-top: 4%;">
+          <mat-label >20. ¿Cómo se enteró del centro de carreras técnicas de la UA?</mat-label>
+          <mat-radio-group  style="text-align: left;margin: 0;" [formControl]="form3.controls['comoEntero']" required>
+            <mat-radio-button class="col-md-12" value="POR LA PÁGINA WEB">POR LA PÁGINA WEB</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="POR REDES SOCIALES">POR REDES SOCIALES</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="A TRAVÉS DE CHARLAS">A TRAVÉS DE CHARLAS</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="POR PUBLICIDAD EN RADIO">POR PUBLICIDAD EN RADIO</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="POR PUBLICIDAD EL LOCOMOCIÓN COLECTIVA">POR PUBLICIDAD EL LOCOMOCIÓN COLECTIVA</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="POR RECOMENDACIÓN DE FAMILIARES, CONOCIDOS, AMIGOS">POR RECOMENDACIÓN DE FAMILIARES, CONOCIDOS, AMIGOS</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="POR GIGANTOGRAFÍA">POR GIGANTOGRAFÍA</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="POR BÚSQUEDA EN INTERNET">POR BÚSQUEDA EN INTERNET</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="OTROS">OTROS</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-md-12" style="text-align: left;">
+          <mat-form-field appearance="outline">
+            <mat-label >21. En el caso de haber respondido en la pregunta 20 "otros", indique cómo se enteró</mat-label>
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['comoEnteroOtro']">
+          </mat-form-field>  
+        </div>
+        <div class="col-md-12" style="text-align: left;margin-top: 2%;">
+          <mat-label >22. ¿Por qué decidió estudiar en las carreras técnicas de la universidad de antofagasta?</mat-label>
+          <mat-radio-group  style="text-align: left;margin: 0;" [formControl]="form3.controls['decidioEstudiar']" required>
+            <mat-radio-button class="col-md-12" value="POR LOS HORARIOS DE CLASES">POR LOS HORARIOS DE CLASES</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="PORQUE EL TÍTULO LO OTORGA LA UNIVERSIDAD DE ANTOFAGASTA">PORQUE EL TÍTULO LO OTORGA LA UNIVERSIDAD DE ANTOFAGASTA</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="PORQUE LA INSTITUCIÓN ESTÁ ACREDITADA">PORQUE LA INSTITUCIÓN ESTÁ ACREDITADA</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="PORQUE TIENE ACCESO A GRATUIDAD">PORQUE TIENE ACCESO A GRATUIDAD</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="PORQUE ES UNA UNIVERSIDAD ESTATAL">PORQUE ES UNA UNIVERSIDAD ESTATAL</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="POR EL PRESTIGIO DE LA INSTITUCIÓN">POR EL PRESTIGIO DE LA INSTITUCIÓN</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="PORQUE EXISTE UN CONVENIO DE ARTICULACIÓN">PORQUE EXISTE UN CONVENIO DE ARTICULACIÓN</mat-radio-button>
+            <mat-radio-button class="col-md-12" value="OTROS">OTROS</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-md-12" style="text-align: left;margin-top: 2%;">
+          <mat-form-field appearance="outline">
+            <mat-label >23. En el caso de haber respondido en la pregunta 22 "otros", indique cómo se enteró</mat-label>
+            <input matInput placeholder="" style="text-transform: capitalize;" [formControl]="form3.controls['decidioEstudiarOtro']">
+          </mat-form-field>  
         </div>
       </div>
+      
      
       
     <div class="row" style="margin-top: 5%;text-align: center;">
@@ -375,7 +488,7 @@
       </div>
     </form> 
     <footer style="margin-top: 10%;margin-bottom: 5%;">
-      <h5 style="width: 100%;">Centro de Centro de Carreras Técnicas</h5>
+      <h5 style="width: 100%;"> Centro de Carreras Técnicas</h5>
       <div class="row" style="margin: 0;width: 80%;margin-left: 10%;">
         <div class="col-md-4 row" style="margin: 0;">
           <div class="col-2"><img src="assets/img/IMG-05.png" alt=""></div>

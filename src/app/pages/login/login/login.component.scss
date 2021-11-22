@@ -27,8 +27,10 @@
 /deep/ .mat-radio-label-content {
   white-space: break-spaces !important;
 }
+
 /deep/ .mat-radio-group .mat-radio-button{
-  margin: 1% !important;
+  margin: 0 !important;
+  padding: 1%;
 }
 
 /deep/ .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -85,6 +87,9 @@
 .tit{
   font-weight: normal;
 }
+mat-label{
+  font-weight: bold;
+}
 .btnContacto{
   color:white;font-size: 24px;border-radius: 50px !important;width: 50%;font-weight: bold;
 }
@@ -95,6 +100,16 @@
 }
 .btnCarrera:hover{
   font-size: 18px;
+}
+
+.btnCarrera2{
+  border-radius: 50px !important;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;height: 100%;width: 100%;
+}
+.btnCarrera2:hover{
+  font-size: 16px;
 }
 @media(max-width: 600px) {
   .btnContacto{
@@ -166,40 +181,12 @@
 .owl-carousel.owl-loaded{
   background: white !important;
 }
-// .owl-carousel .nav-btn {
-//   height: 47px;
-//   position: absolute;
-//   width: 26px;
-//   cursor: pointer;
-//   top: 30% !important;
-// }
 
 .owl-carousel .owl-prev.disabled,
 .owl-carousel .owl-next.disabled {
   pointer-events: none;
   opacity: 0.2;
 }
-
-// .owl-carousel .prev-slide {
-//   // background: url(../../../../assets/img/footer.png) no-repeat scroll 0 0;
-//   // left: -33px;
-//   // background-position: 0px -53px;
-
-// }
-
-// .owl-carousel .next-slide {
-//   // background: url(../../../../assets/img/footer.png) no-repeat scroll -24px 0px;
-//   // right: -33px;
-//   // background-position: -24px -53px;
-// }
-
-// .owl-carousel .prev-slide:hover {
-//   background-position: 0px -53px;
-// }
-
-// .owl-carousel .next-slide:hover {
-//   background-position: -24px -53px;
-// }
 
 @font-face {font-family: "Acta Display"; src: url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.eot"); src: url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.woff") format("woff"), url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/8426a04cc01b52b246b8a8e01d168356.svg#Acta Display") format("svg"); }
 ::ng-deep .mat-input-underline {
