@@ -17,11 +17,11 @@ export class AppComponent {
       filter(event => event instanceof NavigationEnd)
     );
 
-    // navEndEvents$.subscribe((event: NavigationEnd) => {
-    //   gtag('config', 'G-5RSQ7NYG0R', {
-    //     'page_path': event.urlAfterRedirects
-    //   });
-    // });
+    navEndEvents$.subscribe((event: NavigationEnd) => {
+      gtag('config', 'G-5563B4R0DL', {
+        'page_path': event.urlAfterRedirects
+      });
+    });
   }
 
 }
