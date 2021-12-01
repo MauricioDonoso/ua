@@ -1,0 +1,26 @@
+@import '../../../../assets/sass/variable';
+
+:host {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+
+  .ni-card {
+    margin: 0 auto;
+    max-width: 1280px;
+    /deep/ .card-wrap {
+      border: 0;
+      background-color: white !important;
+    }
+    /deep/ .card-content {
+      padding: 0% !important;
+    }
+    form{
+      width: 60%;
+      margin-left: 20%;
+      background: white;
+      padding: 2%;
+    }
+  
+  }
+}

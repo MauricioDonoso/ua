@@ -44,6 +44,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { CalendarModule,CalendarDateFormatter } from 'angular-calendar';
 import { OwlModule } from 'ngx-owl-carousel';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS} from 'ng-pick-datetime';
+import { PoliticasComponent } from './politicas/politicas.component';
 export const MY_MOMENT_FORMATS = {
   fullPickerInput: {day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'},
   datePickerInput: {day: 'numeric', month: 'numeric', year: 'numeric',},
@@ -54,7 +55,7 @@ export const MY_MOMENT_FORMATS = {
 };
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, PoliticasComponent],
   imports: [
     CommonModule,
     FormsModule,
