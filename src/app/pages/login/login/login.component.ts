@@ -76,10 +76,14 @@ export class LoginComponent implements OnInit {
   formDirective: FormGroupDirective
   images = [
     {
-      image: "assets/img/Slide_Slide1.png"
+      image: "assets/img/matricula.jpeg",
+      link:"https://forms.office.com/pages/responsepage.aspx?id=snownTLjw0OTqj5ySP_nfbdumg0xnvBAqrbjQF-x7mRURFpNUEdVQkxUNzNVSldSMTA0R0cyQk1VRi4u"
     },
     {
-      image: "assets/img/Slide_Slide2.png"
+      image: "assets/img/Slide_Slide1.png",
+    },
+    {
+      image: "assets/img/Slide_Slide2.png",
     },
   ]
 
@@ -478,6 +482,9 @@ export class LoginComponent implements OnInit {
     // })
   }
 
+  abrirFormulario(link){
+    window.open(link, '_blank')
+  }
   abrir(data){
     window.open('assets/carreras/'+data,'_blank')
   }

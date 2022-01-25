@@ -12,7 +12,7 @@
   </div>
   <owl-carousel [options]="carouselOptions" [items]="images" [carouselClasses]="['owl-theme', 'fondo_carr', 'sliding']" style="background: white !important;">
     <div class="item" *ngFor="let image of images;let i= index" style="background: white;">
-      <img class="slide_img" src="{{image.image}}">
+      <a (click)="image.link ? abrirFormulario(image.link) : null"><img class="slide_img" src="{{image.image}}"></a>
     </div>
   </owl-carousel>
   <div style="background-color: #fff;padding-bottom: 2%;">
